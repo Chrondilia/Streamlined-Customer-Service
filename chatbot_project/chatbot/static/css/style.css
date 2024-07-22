@@ -1,0 +1,112 @@
+/* Reset some default styles */
+body, h1, p, input, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Basic body styling */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #3688a8, #f0ee75); /* Sky blue to light blue gradient */
+    color: #333;
+}
+
+/* Container for the chatbot */
+#chatbox {
+    width: 80%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #a0ced1;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 400px;
+    overflow-y: auto;
+}
+
+/* User and bot messages */
+#chatbox p {
+    margin-bottom: 10px;
+}
+
+#chatbox p.user {
+    text-align: right;
+    color: #000000;
+}
+
+#chatbox p.bot {
+    text-align: left;
+    color: #28a745;
+}
+
+/* Input field and button */
+input[type="text"] {
+    width: calc(100% - 100px);
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Interactive states */
+button:hover {
+    background-color: #0056b3;
+}
+
+button:active {
+    background-color: #003d80;
+    transform: scale(0.98);
+}
+
+input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(38, 143, 255, 0.25);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    #chatbox {
+        width: 95%;
+    }
+
+    input[type="text"] {
+        width: calc(100% - 80px);
+    }
+
+    button {
+        width: 80px;
+    }
+}
+
+/* Container for the input field and button */
+#input-container {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+}
+
+/* Style for the input field */
+input[type="text"] {
+    flex: 1;
+    width: calc(100% - 100px);
+}
+
+/* Style for the button */
+button {
+    margin-left: 10px;
+    width: 100px;
+}

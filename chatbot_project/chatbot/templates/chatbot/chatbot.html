@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chatbot</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <script>
+        async function sendMessage() {
+            const message = document.getElementById('message').value;
+            document.getElementById('message').value = ''; // Clear input field
+            try {
+                const response = await fetch('/chat/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}',
+                    },
+                    body: JSON.stringify({'message': message}),
+                });
+                const data = await response.json();
+                const chatbox = document.getElementById('chatbox');
+                chatbox.innerHTML += '<p class="user">User: ' + message + '</p>';
+                if (data.response) {
+                    chatbox.innerHTML += '<p class="bot">Bot: ' + data.response + '</p>';
+                } else if (data.error) {
+                    chatbox.innerHTML += '<p>Error: ' + data.error + '</p>';
+                }
+                chatbox.scrollTop = chatbox.scrollHeight; // Scroll to the bottom
+            } catch (error) {
+                document.getElementById('chatbox').innerHTML += '<p>Error: ' + error.message + '</p>';
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Chatbot Interface</h1>
+    <div id="chatbox"></div>
+    <div id="input-container">
+        <input type="text" id="message" placeholder="Type a message">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</body>
+</html>
